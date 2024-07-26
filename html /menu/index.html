@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffa07a, #ff69b4, #87cefa, #90ee90, #ffb347);
+            background-size: 300% 300%;
+            animation: gradient 10s ease infinite;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            background-color: rgba(51, 51, 51, 0.95);
+            color: #fff;
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .sidebar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 20px;
+            width: 100%;
+            text-align: left;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar a i {
+            margin-right: 10px;
+        }
+
+        .sidebar a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Main content styles */
+        .main-content {
+            margin-left: 250px;
+            padding: 40px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 3em;
+            margin-bottom: 30px;
+            text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Button styles */
+        .btn {
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border: none;
+            border-radius: 30px;
+            transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: "";
+            background: rgba(255, 255, 255, 0.6);
+            display: block;
+            position: absolute;
+            padding-top: 300%;
+            padding-left: 350%;
+            margin-left: -20px;
+            margin-top: -120%;
+            opacity: 0;
+            transition: all 0.8s;
+        }
+
+        .btn:active::after {
+            padding: 0;
+            margin: 0;
+            opacity: 1;
+            transition: 0s;
+        }
+
+        .btn:hover {
+            background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                box-shadow: none;
+                flex-direction: row;
+                justify-content: space-around;
+                padding: 10px 0;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .btn {
+                margin: 5px;
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+        <a href="#" onclick="goToGoogleSearch()"><i class="fas fa-home"></i>Home</a>
+        <a href="#" onclick="google_search()"><i class="fas fa-search"></i>Google Search</a>
+
+        <a href="#" onclick="linux()"><i class="fas fa-terminal"></i>Linux Terminal</a>
+
+        <!-- <a href="#" onclick="dockerAutomation()"><i class="fab fa-docker"></i>Docker Automation</a> -->
+
+
+
+         <a href="#" onclick="aws()"><i class="fab fa-docker"></i>Run Aws</a>
+        <!-- <a href="#" onclick="texttospeech()"><i class="fab fa-docker"></i>Text to speech </a>  -->
+
+        <a href="https://github.com/Rahul4396/Web-Server" target="_blank"><i class="fab fa-github"></i>GitHub</a>
+
+    </div>
+
+    <!-- Main content -->
+
+    <div class="main-content">
+       <h1>Linux World</h1>
+
+
+        <button class="btn" onclick="google_search()">Google Search</button>
+
+        <button class="btn" onclick="linux()">Linux Terminal</button>
+       <!--
+        <button class="btn" onclick="dockerAutomation()">Docker Automation</button>
+        <button class="btn" onclick="create_bucket()">Create Bucket</a>
+        <button class="btn" onclick= "ec2_instance()">Ec2 instance</a>
+        <button class="btn" onclick="create_container()">Create Container</a>
+        <button class="btn" onclick="list_containers()">List Containers</a>
+        <button class="btn" onclick="remove_container()">Remove Container</a>
+        <button class="btn" onclick="start_container()">Start Container</a>
+        <button class="btn" onclick="stop_container()">Stop Container</a>
+       -->
+
+
+       <button class="btn" onclick="aws()">Run AWS</button>
+        <button class="btn" onclick="texttospeech()">Text to speech </button>
+        <button class="btn" onclick="chatbot()">Chatbot </button>
+        <!-- <button class="btn" onclick="cam_live()">Live Camera </a> -->
+        <button class="btn" onclick="geo_coordinates()">Get Coordinates </button>
+        <button class="btn" onclick="weather()"> Weather </button>
+        <button class="btn" onclick="counter()"> Counter </button>
+        <button class="btn" onclick="calculators()"> Calculator </button>
+        <!--
+                <button class="btn" onclick="whatsapp()"> Whatsapp </button>
+        -->
+<!--
+        <button class ="btn" onclick="calculator()">calculator</button>
+-->
+        <!-- <button class ="btn" onclick="to_do()">To do List</a> -->
+        <!-- <button class ="btn" onclick="link()">Link Shortner</a> -->
+        <!--
+        <button class ="btn" onclick="record_audio()">Record Audio</a>
+        -->
+
+    </div>
+
+    <!-- JavaScript to handle button clicks -->
+    <script>
+        // Functions to handle button clicks
+
+     <!--
+         function calculator() {
+            window.location.href = "calculator.html";
+         }
+        -->
+
+        function whatsapp() {
+            window.location.href = "whatsapp.html";
+         }
+
+        function calculators() {
+            window.location.href = "calculators.html";
+        }
+
+
+        function counter() {
+            window.location.href = "https://667eb89e65c136134c1cd1d3--amazing-youtiao-411b26.netlify.app/";
+        }
+
+
+         function weather() {
+            window.location.href = "weather.html";
+        }
+
+
+        function link() {
+                window.location.href = "link.html";
+        }
+
+         function record_audio() {
+            window.location.href = "record_audio.html";
+        }
+
+
+         function to_do() {
+            window.location.href = "to_do.html";
+        }
+
+
+        function google_search() {
+            window.location.href = "google_search.html";
+        }
+
+       /*
+       function sendBulkEmail() {
+            window.location.href = "send_bulk_email.html";
+        }
+            */
+
+        function geoCoordinates() {
+            window.location.href = "geo_coordinates.html";
+        }
+
+
+        function linux() {
+            window.location.href = "linux.html";
+        }
+          /*
+        function dockerAutomation() {
+            window.location.href = "docker.html";
+        }
+            */
+       /*
+        function htmlInterpreter() {
+            window.location.href = "html_live_interpreter.html";
+        }
+            */
+
+        /*
+        function pythonSMS() {
+            window.location.href = "python_sms.html";
+        }
+            */
+
+        /*
+        function cam_live() {
+            window.location.href = "cam_live.html";
+        }
+            */
+
+        /*
+        function create_bucket() {
+            window.location.href = "create_bucket.html";
+        }
+            */
+        /*function ec2_instance() {
+            window.location.href = "ec2_instance.html";
+        }
+        function create_container() {
+            window.location.href = "create_container.html";
+        }
+        function list_containers() {
+            window.location.href = "list_containers.html";
+        }
+        function remove_container() {
+            window.location.href = "remove_container.html";
+        }
+        function start_container() {
+            window.location.href = "start_container.html";
+        }
+        function stop_container() {
+            window.location.href = "stop_container.html";
+        }
+         */
+
+         function aws() {
+            window.location.href = "aws.html";
+        }
+        function texttospeech() {
+            window.location.href = "texttospeech.html";
+        }
+         function chatbot() {
+                 window.location.href = "chatbot.html";
+         }
+        function cam_live() {
+                 window.location.href = "cam_live.html";
+         }
+        function geo_coordinates() {
+                 window.location.href = "geo_coordinates.html";
+         }
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<html>
+<head>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffa07a, #ff69b4, #87cefa, #90ee90, #ffb347);
+            background-size: 300% 300%;
+            animation: gradient 10s ease infinite;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        .container {
+            background: #ffffff;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            transition: transform 0.3s;
+            width: 100%;
+            max-width: 500px;
+            align-self: center;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+
+    </style>
+    <title>Docker Webpage</title>
+    <script>
+
+           function lw() {
+    var command = document.getElementById("input").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/cgi-bin/linux.py?cmd=" + encodeURIComponent(command), true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById("d1").innerText = xhr.responseText;
+        }
+    };
+    xhr.send();
+}
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2 align="center">
+            <p>
+
+                Command:<input id="input" required="True" type="text" placeholder="Enter your required command" style="width: 50%; margin-bottom:10px" />
+                <button class="button" onclick="lw()"> click here </button>
+            </p>
+        </h2>
+    </div>
+    <pre>
+        <h2 style="color:rgb(0, 0, 0)">
+            <div id="d1" align="center"></div>
+        </h2>
+    </pre>
+</body>
+</html>
